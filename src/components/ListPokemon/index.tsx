@@ -8,8 +8,11 @@ import IListPokemonRequest from '../../services/interfaces/IListPokemonRequest';
 import IPokemon from './IPokemon';
 import Pagination from '../Pagination';
 
-const ListPokemon = () =>  {
-  const [pagination, setPagination] = useState<IPagination>({ limit: 30, offset: 0 });
+const ListPokemon = () => {
+  const [pagination, setPagination] = useState<IPagination>({
+    limit: 30,
+    offset: 0,
+  });
   const [loading, setLoading] = useState(false);
   const [listPokemon, setListPokemon] = useState<IPokemon[]>();
   useEffect(() => {
@@ -17,12 +20,15 @@ const ListPokemon = () =>  {
     getListPokemon();
   }, [pagination]);
   function getListPokemon() {
-    pokeapi.get<IListPokemonRequest>(`?offset=${pagination.offset}&limit=${pagination.limit}`)
-      .then(response => {
+    pokeapi
+      .get<IListPokemonRequest>(
+        `pokemon?offset=${pagination.offset}&limit=${pagination.limit}`
+      )
+      .then((response) => {
         const pokemon = response.data.results.map((item, index) => {
           return {
             id: index + pagination.offset + 1,
-            name: item.name
+            name: item.name,
           } as IPokemon;
         });
         setListPokemon(pokemon);
@@ -44,6 +50,6 @@ const ListPokemon = () =>  {
       <Pagination onChange={handleChangePagination} loading={loading} />
     </ContainerWrapper>
   );
-}
+};
 
 export default ListPokemon;
