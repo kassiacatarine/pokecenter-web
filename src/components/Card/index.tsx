@@ -1,10 +1,16 @@
 import React from 'react';
 import { Container, Image } from './styles';
 
-const Card = () => {
+interface CardProps {
+  id: number,
+  name: string
+}
+
+const Card = (props: CardProps) => {
   return (
     <Container>
-      <Image src='https://pokeres.bastionbot.org/images/pokemon/1.png' alt='props.name' />
+      <Image src={`https://pokeres.bastionbot.org/images/pokemon/${props.id}.png`} alt={props.name} />
+      <h3>{props.name}</h3>
     </Container>
   );
 }

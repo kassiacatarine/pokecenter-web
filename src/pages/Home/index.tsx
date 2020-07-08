@@ -1,13 +1,14 @@
 import React from 'react';
-import Card from '../../components/Card';
 import { Container } from './styles';
+import Cart from '../../components/Cart';
+import ListPokemon from '../../components/ListPokemon';
 
 const Home = () => {
   return (
     <Container>
-      <Card />
-      <Card />
-      <Card />
+      <Cart />
+      <ListPokemon />
+      <Cart />
     </Container>
   );
 }

@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  margin: 5px;
 `;
 
 export const Image = styled.img`

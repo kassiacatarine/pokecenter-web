@@ -1,0 +1,15 @@
+export enum EBreakpoint {
+  Xs = 'screen and (max-width: 599px)',
+  Sm	= 'screen and (min-width: 600px) and (max-width: 959px)',
+  Md	= 'screen and (min-width: 960px) and (max-width: 1279px)',
+  Lg	= 'screen and (min-width: 1280px) and (max-width: 1919px)',
+  Xl	= 'screen and (min-width: 1920px) and (max-width: 5000px)',
+  LtSm	= 'screen and (max-width: 599px)',
+  LtMd	= 'screen and (max-width: 959px)',
+  LtLg	= 'screen and (max-width: 1279px)',
+  LtXl	= 'screen and (max-width: 1919px)',
+  GtXs	= 'screen and (min-width: 600px)',
+  GtSm	= 'screen and (min-width: 960px)',
+  GtMd	= 'screen and (min-width: 1280px)',
+  GtLg	= 'screen and (min-width: 1920px)',
+}
