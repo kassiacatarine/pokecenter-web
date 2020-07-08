@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Card from '../Card';
 import { Container, ContainerWrapper } from './styles';
 import IPagination from '../../utils/IPagination';
@@ -15,11 +15,7 @@ const ListPokemon = () => {
   });
   const [loading, setLoading] = useState(false);
   const [listPokemon, setListPokemon] = useState<IPokemon[]>();
-  useEffect(() => {
-    setLoading(true);
-    getListPokemon();
-  }, [pagination]);
-  function getListPokemon() {
+  const getListPokemon = useCallback(() => {
     pokeapi
       .get<IListPokemonRequest>(
         `pokemon?offset=${pagination.offset}&limit=${pagination.limit}`
@@ -34,7 +30,11 @@ const ListPokemon = () => {
         setListPokemon(pokemon);
         setLoading(false);
       });
-  }
+  }, [pagination]);
+  useEffect(() => {
+    setLoading(true);
+    getListPokemon();
+  }, [pagination, getListPokemon]);
 
   function handleChangePagination(page: IPagination) {
     setPagination(page);
